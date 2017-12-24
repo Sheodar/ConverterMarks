@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage Window) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Window.setResizable(false);
-        Window.setTitle("Hello World");
+        Window.setTitle("Converter Marks");
         Window.setScene(new Scene(root));
         Window.show();
     }
