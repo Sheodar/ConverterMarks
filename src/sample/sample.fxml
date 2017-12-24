@@ -8,72 +8,71 @@
 
 <AnchorPane id="AnchorPane" fx:id="main" maxHeight="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <Button fx:id="vmjButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" text="VoxelMap -&gt; JMap" />
-        <Button fx:id="jvmButton" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" text="JMap -&gt; VoxelMap" />
-      <AnchorPane id="v_j" fx:id="v_j" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="4.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь в исходному файлу формата .points">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="vjPath1" editable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="454.0" />
-            <Button fx:id="vjSearch1" layoutX="480.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
-            <Label layoutX="14.0" layoutY="66.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить новые маркеры">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="vjPath2" editable="false" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="454.0" />
-            <Button fx:id="vjSearch2" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
-            <Button fx:id="vjStart" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
-            <Button fx:id="vjBack" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
-            <Label fx:id="vjErrorMain" layoutX="14.0" layoutY="135.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
-            <Label fx:id="vjError2" layoutX="350.0" layoutY="70.0" text="*" textFill="#c30000" visible="false" />
-            <Label fx:id="vjError1" layoutX="295.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
-         </children>
-      </AnchorPane>
-        <AnchorPane id="v_j" fx:id="j_v" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+        <Button fx:id="vmjButton" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" text="VoxelMap -&gt; JMap" />
+        <Button fx:id="jvmButton" focusTraversable="false" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" text="JMap -&gt; VoxelMap" />
+        <AnchorPane id="v_j" fx:id="v_j" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false">
             <children>
-                <Label layoutX="14.0" layoutY="4.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь к папке, содержащей маркеры формата .json ">
+                <Label focusTraversable="false" layoutX="14.0" layoutY="4.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь в исходному файлу формата .points">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </Label>
-                <TextField fx:id="jvPath1" editable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="454.0" />
-                <Button fx:id="jvSearch1" layoutX="480.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
-                <Label layoutX="14.0" layoutY="66.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить файл с новым формат маркеров">
+                <TextField fx:id="vjPath1" editable="false" focusTraversable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="454.0" />
+                <Button fx:id="vjSearch1" focusTraversable="false" layoutX="480.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
+                <Label focusTraversable="false" layoutX="14.0" layoutY="66.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить новые маркеры">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </Label>
-                <TextField fx:id="jvPath2" editable="false" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="454.0" />
-                <Button fx:id="jvSearch2" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
-                <Button fx:id="jvStart" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
-            <Button fx:id="jvBack" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
-            <Label fx:id="jvErrorMain" layoutX="14.0" layoutY="135.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
-            <Label fx:id="jvError2" layoutX="448.0" layoutY="69.0" text="*" textFill="#c30000" visible="false" />
-            <Label fx:id="jvError1" layoutX="346.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
-            <Label layoutX="9.0" layoutY="159.0" prefHeight="42.0" prefWidth="573.0" text="Важно! Имя создаваемого файлы задается по-умолчанию. Дабы все работало корректно, название необходимо взять уже существующее, и переименовать сгенерированный файл." textAlignment="CENTER" textFill="#a80c0c" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+                <TextField fx:id="vjPath2" editable="false" focusTraversable="false" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="454.0" />
+                <Button fx:id="vjSearch2" focusTraversable="false" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
+                <Button fx:id="vjStart" focusTraversable="false" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
+                <Button fx:id="vjBack" focusTraversable="false" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
+                <Label fx:id="vjErrorMain" focusTraversable="false" layoutX="14.0" layoutY="135.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
+                <Label fx:id="vjError2" focusTraversable="false" layoutX="350.0" layoutY="70.0" text="*" textFill="#c30000" visible="false" />
+                <Label fx:id="vjError1" focusTraversable="false" layoutX="295.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
             </children>
         </AnchorPane>
-      <AnchorPane fx:id="hi" layoutX="14.0" layoutY="57.0" prefHeight="243.0" prefWidth="600.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">
-         <children>
-            <Label layoutX="4.0" prefHeight="42.0" prefWidth="604.0" text="Это небольшая утилита поможет вам конвертировать маркеры из одной мини-карты в маркеры для другой.  Дабы все прошло успешно слендуйте таким советам:" wrapText="true" />
-            <Label layoutX="4.0" layoutY="42.0" text="1) Перед работой сделайте копию исходника." />
-            <Label layoutX="4.0" layoutY="59.0" text="2) Заполняйте оба поля для успешного завершения." />
-            <Label layoutX="4.0" layoutY="76.0" text="3) Программа не знает русских букв, поэтому кирилица будет восприниматься, как неизвестные символы." wrapText="true" />
-            <Label layoutX="258.0" layoutY="134.0" prefHeight="55.0" prefWidth="334.0" text="Изначально утилита делалась для личного использования, поэтому за ошибки я не отвечаю, у меня все прекрастно работает :)" textAlignment="RIGHT" wrapText="true">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="4.0" layoutY="93.0" text="4) В свете того, как хранятся файлы в Win, некоторые символы в названиях маркеров будут заменены на +" />
-         </children>
-      </AnchorPane>
+        <AnchorPane id="v_j" fx:id="j_v" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+            <children>
+                <Label focusTraversable="false" layoutX="14.0" layoutY="4.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь к папке, содержащей маркеры формата .json ">
+                    <font>
+                        <Font name="Arial" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="jvPath1" editable="false" focusTraversable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="454.0" />
+                <Button fx:id="jvSearch1" focusTraversable="false" layoutX="480.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
+                <Label focusTraversable="false" layoutX="14.0" layoutY="66.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить файл с новым формат маркеров">
+                    <font>
+                        <Font name="Arial" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="jvPath2" editable="false" focusTraversable="false" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="454.0" />
+                <Button fx:id="jvSearch2" focusTraversable="false" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
+                <Button fx:id="jvStart" focusTraversable="false" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
+                <Button fx:id="jvBack" focusTraversable="false" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
+                <Label fx:id="jvErrorMain" focusTraversable="false" layoutX="14.0" layoutY="135.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
+                <Label fx:id="jvError2" focusTraversable="false" layoutX="448.0" layoutY="69.0" text="*" textFill="#c30000" visible="false" />
+                <Label fx:id="jvError1" focusTraversable="false" layoutX="346.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
+                <Label focusTraversable="false" layoutX="9.0" layoutY="159.0" prefHeight="42.0" prefWidth="573.0" text="Важно! Имя создаваемого файла задается по-умолчанию. Дабы все работало корректно, название необходимо взять уже существующее, и переименовать сгенерированный файл." textAlignment="CENTER" textFill="#a80c0c" wrapText="true">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="hi" layoutX="14.0" layoutY="57.0" prefHeight="243.0" prefWidth="600.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">
+            <children>
+                <Label focusTraversable="false" layoutX="4.0" prefHeight="42.0" prefWidth="604.0" text="Это небольшая утилита поможет вам конвертировать маркеры из одной мини-карты в маркеры для другой.  Дабы все прошло успешно слендуйте таким советам:" wrapText="true" />
+                <Label focusTraversable="false" layoutX="4.0" layoutY="42.0" text="1) Перед работой сделайте копию исходника." />
+                <Label focusTraversable="false" layoutX="4.0" layoutY="59.0" text="2) Заполняйте оба поля для успешного завершения." />
+                <Label focusTraversable="false" layoutX="258.0" layoutY="134.0" prefHeight="55.0" prefWidth="334.0" text="Изначально утилита делалась для личного использования, поэтому за ошибки я не отвечаю, у меня все прекрастно работает :)" textAlignment="RIGHT" wrapText="true">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font>
+                </Label>
+                <Label focusTraversable="false" layoutX="4.0" layoutY="76.0" text="3) В свете того, как хранятся файлы в Win, некоторые символы в названиях маркеров будут заменены на +" />
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

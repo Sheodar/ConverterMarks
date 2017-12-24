@@ -98,6 +98,9 @@ public class Controller {
                 j_v.setVisible(false);
                 jvPath1.setText("");
                 jvPath2.setText("");
+                vmjButton.focusTraversableProperty();
+                vmjButton.setStyle("-fx-background-color: linear-gradient(#66CC66 0%, #99FF99 30%, #99FF99 75%, #66CC66 100%)");
+                jvmButton.setStyle(null);
             }
         });
         jvmButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -108,6 +111,8 @@ public class Controller {
                 j_v.setVisible(true);
                 vjPath1.setText("");
                 vjPath2.setText("");
+                jvmButton.setStyle("-fx-background-color: linear-gradient(#66CC66 0%, #99FF99 30%, #99FF99 75%, #66CC66 100%)");
+                vmjButton.setStyle(null);
             }
         });
 
@@ -119,6 +124,8 @@ public class Controller {
                 v_j.setVisible(false);
                 vjPath1.setText("");
                 vjPath2.setText("");
+                vmjButton.setStyle(null);
+                jvmButton.setStyle(null);
             }
         });
         jvBack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -128,6 +135,8 @@ public class Controller {
                 j_v.setVisible(false);
                 jvPath1.setText("");
                 jvPath2.setText("");
+                vmjButton.setStyle(null);
+                jvmButton.setStyle(null);
             }
         });
 
