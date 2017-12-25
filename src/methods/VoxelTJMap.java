@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -19,7 +20,7 @@ public class VoxelTJMap extends SQLException {
     }
 
     public static void remakeVJ(String path1, String path2) throws Exception {
-        InputStreamReader marker = new InputStreamReader(new FileInputStream(path1), UTF_8);
+        InputStreamReader marker = new InputStreamReader(new FileInputStream(path1), "Cp1251");
         Scanner scan = new Scanner(marker);
         int c = 1;
         while (scan.hasNextLine()) {
@@ -31,7 +32,8 @@ public class VoxelTJMap extends SQLException {
                 String line2 = removeLastChar(line).replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
                 String[] split = line2.split(",");
                 String name = split[0] + "_" + split[1] + "," + split[3] + "," + split[2] + ".json";
-                Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), "Cp1251");
+                Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), UTF_8);
+//                System.out.print(Arrays.toString(split));
                 writer.write("{ \n\"id\": \"" +
                         split[0] + "_" +
                         split[1] + "," +
