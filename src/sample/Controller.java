@@ -75,7 +75,14 @@ public class Controller {
     private Label jvError1;
     @FXML
     private Label jvError2;
-
+    @FXML
+    private TextField jvNameNewFile;
+    @FXML
+    private Label jvHint;
+    @FXML
+    private Label jvHintText;
+    @FXML
+    private Label jvHintTarget;
     /**
      * --------------------------------------------------------------------------------
      **/
@@ -90,12 +97,29 @@ public class Controller {
      **/
 
     public void initialize() {
+        jvHintText.toFront();
+        jvHintTarget.toFront();
+        jvHintTarget.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                jvHintText.setVisible(true);
+            }
+        });
+        jvHintTarget.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                jvHintText.setVisible(false);
+            }
+        });
+
+
         vmjButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 hi.setVisible(false);
                 v_j.setVisible(true);
                 j_v.setVisible(false);
+                jvNameNewFile.setText("");
                 jvPath1.setText("");
                 jvPath2.setText("");
                 vmjButton.focusTraversableProperty();
@@ -133,6 +157,7 @@ public class Controller {
             public void handle(MouseEvent mouseEvent) {
                 hi.setVisible(true);
                 j_v.setVisible(false);
+                jvNameNewFile.setText("");
                 jvPath1.setText("");
                 jvPath2.setText("");
                 vmjButton.setStyle(null);
@@ -229,7 +254,8 @@ public class Controller {
                     jvErrorMain.setVisible(true);
                 } else {
                     try {
-                        remakeJV(jvPath1.getText(), jvPath2.getText());
+                        remakeJV(jvPath1.getText(), jvPath2.getText(), jvNameNewFile.getText());
+                        jvNameNewFile.setText("");
                         jvPath1.setText("");
                         jvPath2.setText("");
                     } catch (Exception e) {

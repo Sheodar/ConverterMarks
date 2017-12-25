@@ -31,7 +31,7 @@ public class VoxelTJMap extends SQLException {
                 String line2 = removeLastChar(line).replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
                 String[] split = line2.split(",");
                 String name = split[0] + "_" + split[1] + "," + split[3] + "," + split[2] + ".json";
-                Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), StandardCharsets.UTF_8);
+                Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), "Cp1251");
                 writer.write("{ \n\"id\": \"" +
                         split[0] + "_" +
                         split[1] + "," +

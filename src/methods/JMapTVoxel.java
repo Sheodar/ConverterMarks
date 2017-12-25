@@ -19,11 +19,16 @@ public class JMapTVoxel extends SQLException {
         return index == -1 ? null : mystr.substring(index);
     }
 
-    public static void remakeJV(String path1, String path2) throws Exception {
+    public static void remakeJV(String path1, String path2, String name) throws Exception {
         File folder = new File(path1);
         File[] folderEntries = folder.listFiles();
         assert folderEntries != null;
-        Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + "s4.red-server.ru~colon~16000.points", false), StandardCharsets.UTF_8);
+        if (Objects.equals(name, "")){
+            name = "node4.red-server.ru~colon~16000.points";
+        }else{
+            name = name + ".points";
+        }
+        Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), "Cp1251");
         writer.write("subworlds:\n" +
                 "oldNorthWorlds:\n" +
                 "seeds:\n");
@@ -59,9 +64,9 @@ public class JMapTVoxel extends SQLException {
                                     ",z:" + split[2] +
                                     ",y:" + split[3] +
                                     ",enabled:" + split[4] +
-                                    ",red:" + "0." + randomeNumder(1111111, 77777777) +
-                                    ",green:" + "0." + randomeNumder(1111111, 77777777) +
-                                    ",blue:" + "0." + randomeNumder(1111111, 77777777) +
+                                    ",red:" + "0." + 0 +
+                                    ",green:" + "0." + 7647059 +
+                                    ",blue:" + "0." + 69803923 +
                                     ",suffix:" +
                                     ",world:" +
                                     ",dimensions:" + split[5] + "#\n"
