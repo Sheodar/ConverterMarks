@@ -56,7 +56,7 @@
                 <Button fx:id="jvSearch2" focusTraversable="false" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
                 <Button fx:id="jvStart" focusTraversable="false" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
                 <Button fx:id="jvBack" focusTraversable="false" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
-                <Label fx:id="jvErrorMain" focusTraversable="false" layoutX="14.0" layoutY="128.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" />
+                <Label fx:id="jvErrorMain" focusTraversable="false" layoutX="14.0" layoutY="128.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
                 <Label fx:id="jvError2" focusTraversable="false" layoutX="448.0" layoutY="69.0" text="*" textFill="#c30000" visible="false" />
                 <Label fx:id="jvError1" focusTraversable="false" layoutX="346.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
                 <Label focusTraversable="false" layoutX="14.0" layoutY="197.0" prefHeight="19.0" prefWidth="573.0" text="Не указав имя, файлу будет задано имя по-умолчанию." textFill="#a80c0c" wrapText="true">
