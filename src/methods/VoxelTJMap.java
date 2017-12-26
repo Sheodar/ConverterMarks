@@ -43,11 +43,11 @@ public class VoxelTJMap extends SQLException {
                         split[1] + ",\n\"y\": " +
                         split[3] + ",\n\"z\": " +
                         split[2] + ",\n\"r\": " +
-                        randomeNumder(0, 255) +
+                        20 +
                         ",\n\"g\": " +
-                        randomeNumder(0, 255) +
+                        204 +
                         ",\n\"b\": " +
-                        randomeNumder(0, 255) +
+                        165 +
                         ",\n\"enable\": true, \n\"type\": \"Normal\", \n\"origin\": \"JourneyMap\", \n\"dimensions\": [\n" +
                         split[10] + "\n]\n}");
                 writer.flush();
