@@ -17,7 +17,6 @@ import static methods.JMapTVoxel.remakeJV;
 import static methods.VoxelTJMap.remakeVJ;
 
 public class Controller {
-    private final FileChooser fileChooser = new FileChooser();
     /**
      * -------------------------------------MAIN----------------------------------------
      **/
@@ -55,7 +54,7 @@ public class Controller {
     @FXML
     private Label vjError2;
     /**
-     * ---------------------------- JMap -> Window Voxel-------------------------------
+     * ---------------------------- Window JMap -> Voxel  -------------------------------
      **/
     @FXML
     private Button jvBack;
@@ -78,11 +77,14 @@ public class Controller {
     @FXML
     private TextField jvNameNewFile;
     @FXML
-    private Label jvHint;
-    @FXML
     private Label jvHintText;
     @FXML
     private Label jvHintTarget;
+    @FXML
+    private Button Test;
+    @FXML
+    private CheckBox jvCheckTest;
+
     /**
      * --------------------------------------------------------------------------------
      **/
@@ -97,20 +99,38 @@ public class Controller {
      **/
 
     public void initialize() {
+
         jvHintText.toFront();
         jvHintTarget.toFront();
-        jvHintTarget.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>(){
+        jvHintTarget.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 jvHintText.setVisible(true);
             }
         });
-        jvHintTarget.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, new EventHandler<MouseEvent>(){
+        jvHintTarget.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 jvHintText.setVisible(false);
             }
         });
+
+
+        Test.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                float x = 5455/16;
+                String q = String.valueOf(x);
+                String[] splitX = q.split("\\.");
+                System.out.println(x);
+                System.out.println(q);
+                if (splitX[1]!=null) {
+                    System.out.println(splitX[1]);
+                }
+            }
+        });
+
+
 
 
         vmjButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -165,11 +185,13 @@ public class Controller {
             }
         });
 
-
         vjSearch1.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
+                        FileChooser fileChooser = new FileChooser();
+                        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("*.points", "*.points");
+                        fileChooser.getExtensionFilters().add(extFilter);
                         File file = fileChooser.showOpenDialog(Main.stage);
                         if (file != null) {
                             if (Objects.equals(getFileExtension(file.getName()), ".points")) {
@@ -254,7 +276,7 @@ public class Controller {
                     jvErrorMain.setVisible(true);
                 } else {
                     try {
-                        remakeJV(jvPath1.getText(), jvPath2.getText(), jvNameNewFile.getText());
+                        remakeJV(jvPath1.getText(), jvPath2.getText(), jvNameNewFile.getText(), jvCheckTest.isSelected());
                         jvNameNewFile.setText("");
                         jvPath1.setText("");
                         jvPath2.setText("");

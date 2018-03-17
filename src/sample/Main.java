@@ -10,7 +10,7 @@ import javafx.stage.Window;
 
 public class Main extends Application {
 
-    public static Window stage;
+    static Window stage;
 
     @Override
     public void start(Stage Window) throws Exception {
@@ -21,7 +21,6 @@ public class Main extends Application {
         Window.setScene(new Scene(root));
         Window.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

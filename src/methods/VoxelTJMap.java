@@ -53,7 +53,9 @@ public class VoxelTJMap extends SQLException {
                 writer.flush();
                 c++;
                 writer.close();
+
             }
         }
+        marker.close();
     }
 }

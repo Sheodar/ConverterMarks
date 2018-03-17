@@ -19,7 +19,7 @@ public class JMapTVoxel extends SQLException {
         return index == -1 ? null : mystr.substring(index);
     }
 
-    public static void remakeJV(String path1, String path2, String name) throws Exception {
+    public static void remakeJV(String path1, String path2, String name, boolean centre) throws Exception {
         File folder = new File(path1);
         File[] folderEntries = folder.listFiles();
         assert folderEntries != null;
@@ -57,6 +57,11 @@ public class JMapTVoxel extends SQLException {
                             split[5] = line.replaceAll(" ", "");
                         }
                         z++;
+                    }
+                    if (!centre){
+                        float x = Integer.parseInt(split[1])/16;
+                        String q = String.valueOf(x);
+                        String[] splitX = q.split(".");
                     }
                     writer.write(
                             "name:" + split[0] +
