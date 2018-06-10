@@ -77,13 +77,13 @@
                </font>
             </Label>
             <Label fx:id="jvHintTarget" layoutX="468.0" layoutY="137.0" opacity="0.0" prefHeight="25.0" prefWidth="21.0" text="null" />
-            <Label layoutX="14.0" layoutY="201.0" text="Отцентрировать маркеры по чанку:" visible="false">
+            <Label layoutX="14.0" layoutY="201.0" text="Отцентрировать маркеры по чанку:">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
             <Button fx:id="Test" layoutX="252.0" layoutY="204.0" mnemonicParsing="false" text="Button" visible="false" />
-            <CheckBox fx:id="jvCheckTest" layoutX="216.0" layoutY="200.0" mnemonicParsing="false" visible="false" />
+            <CheckBox fx:id="jvCheckTest" layoutX="216.0" layoutY="200.0" mnemonicParsing="false" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="hi" layoutX="14.0" layoutY="57.0" prefHeight="243.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">

@@ -18,6 +18,12 @@ public class JMapTVoxel extends SQLException {
         int index = mystr.lastIndexOf('.');
         return index == -1 ? null : mystr.substring(index);
     }
+    public static int centredMarker(double x) {
+        x = Math.ceil(x / 16);
+        x = x-0.5;
+        x = x*16;
+        return (int) x;
+    }
 
     public static void remakeJV(String path1, String path2, String name, boolean centre) throws Exception {
         File folder = new File(path1);
@@ -37,36 +43,43 @@ public class JMapTVoxel extends SQLException {
                 if (entry.isFile()) {
                     InputStreamReader marker = new InputStreamReader(new FileInputStream(entry.getAbsolutePath()), UTF_8);
                     Scanner scan = new Scanner(marker);
-                    int z = 0;
+                    int q = 0;
                     String[] split = new String[7];
                     while (scan.hasNextLine()) {
                         String line = scan.nextLine().replaceAll("(\"|,|\\b\"|\\bx|\\by|\\bz|:|\\bname|\\benable|\\bdimensions.*?\\b)", "");
 //                        String line2 = line.replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
-                        System.out.println(line);
-                        if (z == 2) {
+                        //System.out.println(line);
+                        if (q == 2) {
                             split[0] = line.replaceAll(" ", "");
-                        } else if (z == 4) {
+                        } else if (q == 4) {
                             split[1] = line.replaceAll(" ", "");
-                        } else if (z == 6) {
+                        } else if (q == 6) {
                             split[2] = line.replaceAll(" ", "");
-                        } else if (z == 5) {
+                        } else if (q == 5) {
                             split[3] = line.replaceAll(" ", "");
-                        } else if (z == 10) {
+                        } else if (q == 10) {
                             split[4] = line.replaceAll(" ", "");
-                        } else if (z == 14) {
+                        } else if (q == 14) {
                             split[5] = line.replaceAll(" ", "");
                         }
-                        z++;
+                        q++;
                     }
-                    if (!centre){
-                        float x = Integer.parseInt(split[1])/16;
-                        String q = String.valueOf(x);
-                        String[] splitX = q.split(".");
+                    double x = Double.parseDouble(split[1]);
+                    double z = Double.parseDouble(split[2]);
+                    int x2;
+                    int z2;
+
+                    if (centre){
+                        x2 = centredMarker(x);
+                        z2 = centredMarker(z);
+                    }else{
+                        x2 = (int) x;
+                        z2 = (int) z;
                     }
                     writer.write(
                             "name:" + split[0] +
-                                    ",x:" + split[1] +
-                                    ",z:" + split[2] +
+                                    ",x:" + x2 +
+                                    ",z:" + z2 +
                                     ",y:" + split[3] +
                                     ",enabled:" + split[4] +
                                     ",red:" + "0." + 0 +
