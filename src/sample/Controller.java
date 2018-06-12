@@ -1,15 +1,20 @@
 package sample;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import sample.Main;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.Objects;
 
@@ -83,7 +88,12 @@ public class Controller {
     @FXML
     private Button Test;
     @FXML
-    private CheckBox jvCheckTest;
+    private CheckBox jvCheckCenter;
+    @FXML
+    private CheckBox jvCheckColorSwap;
+    @FXML
+    private ColorPicker colorPickJV;
+
 
     /**
      * --------------------------------------------------------------------------------
@@ -93,6 +103,7 @@ public class Controller {
         int index = mystr.lastIndexOf('.');
         return index == -1 ? null : mystr.substring(index);
     }
+
 
     /**
      * --------------------------------------------------------------------------------
@@ -119,19 +130,31 @@ public class Controller {
         Test.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                float x = 5455/16;
-                String q = String.valueOf(x);
-                String[] splitX = q.split("\\.");
-                System.out.println(x);
-                System.out.println(q);
-                if (splitX[1]!=null) {
-                    System.out.println(splitX[1]);
-                }
+//                float x = 5455/16;
+//                String q = String.valueOf(x);
+//                String[] splitX = q.split("\\.");
+//                System.out.println(x);
+//                System.out.println(q);
+//                if (splitX[1]!=null) {
+//                    System.out.println(splitX[1]);
+//                }
+//                System.out.println(toRGBCode(colorPickJV.getValue().hashCode()));
+                System.out.println(colorPickJV.getValue().getRed());
+                System.out.println(colorPickJV.getValue().getGreen());
+                System.out.println(colorPickJV.getValue().getBlue());
             }
         });
 
-
-
+        jvCheckColorSwap.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue) {
+                    colorPickJV.setVisible(true);
+                } else {
+                    colorPickJV.setVisible(false);
+                }
+            }
+        });
 
         vmjButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -276,7 +299,19 @@ public class Controller {
                     jvErrorMain.setVisible(true);
                 } else {
                     try {
-                        remakeJV(jvPath1.getText(), jvPath2.getText(), jvNameNewFile.getText(), jvCheckTest.isSelected());
+
+                        remakeJV(
+                                jvPath1.getText(),
+                                jvPath2.getText(),
+                                jvNameNewFile.getText(),
+                                jvCheckCenter.isSelected(),
+                                jvCheckColorSwap.isSelected(),
+                                colorPickJV.getValue().getRed(),
+                                colorPickJV.getValue().getGreen(),
+                                colorPickJV.getValue().getBlue()
+                        );
+
+
                         jvNameNewFile.setText("");
                         jvPath1.setText("");
                         jvPath2.setText("");
@@ -287,4 +322,5 @@ public class Controller {
             }
         });
     }
+
 }

@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -18,20 +19,21 @@ public class JMapTVoxel extends SQLException {
         int index = mystr.lastIndexOf('.');
         return index == -1 ? null : mystr.substring(index);
     }
-    public static int centredMarker(double x) {
+
+    private static int centredMarker(double x) {
         x = Math.ceil(x / 16);
-        x = x-0.5;
-        x = x*16;
+        x = x - 0.5;
+        x = x * 16;
         return (int) x;
     }
 
-    public static void remakeJV(String path1, String path2, String name, boolean centre) throws Exception {
+    public static void remakeJV(String path1, String path2, String name, boolean centre, boolean changeColor, double red, double green, double blue) throws Exception {
         File folder = new File(path1);
         File[] folderEntries = folder.listFiles();
         assert folderEntries != null;
-        if (Objects.equals(name, "")){
+        if (Objects.equals(name, "")) {
             name = "node4.red-server.ru~colon~16000.points";
-        }else{
+        } else {
             name = name + ".points";
         }
         Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), "Cp1251");
@@ -44,7 +46,7 @@ public class JMapTVoxel extends SQLException {
                     InputStreamReader marker = new InputStreamReader(new FileInputStream(entry.getAbsolutePath()), UTF_8);
                     Scanner scan = new Scanner(marker);
                     int q = 0;
-                    String[] split = new String[7];
+                    String[] split = new String[9];
                     while (scan.hasNextLine()) {
                         String line = scan.nextLine().replaceAll("(\"|,|\\b\"|\\bx|\\by|\\bz|:|\\bname|\\benable|\\bdimensions.*?\\b)", "");
 //                        String line2 = line.replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
@@ -61,20 +63,36 @@ public class JMapTVoxel extends SQLException {
                             split[4] = line.replaceAll(" ", "");
                         } else if (q == 14) {
                             split[5] = line.replaceAll(" ", "");
+                        } else if (q == 7) {
+                            split[6] = line.replaceAll(" ", ""); //r
+                        } else if (q == 8) {
+                            split[7] = line.replaceAll(" ", ""); //g
+                        } else if (q == 9) {
+                            split[8] = line.replaceAll(" ", ""); //b
                         }
                         q++;
                     }
+
                     double x = Double.parseDouble(split[1]);
                     double z = Double.parseDouble(split[2]);
+                    double r = (double) (Integer.parseInt(split[6].substring(1))) / 255;
+                    double g = (double) (Integer.parseInt(split[7].substring(1))) / 255;
+                    double b = (double) (Integer.parseInt(split[8].substring(1))) / 255;
+
                     int x2;
                     int z2;
 
-                    if (centre){
+                    if (centre) {
                         x2 = centredMarker(x);
                         z2 = centredMarker(z);
-                    }else{
+                    } else {
                         x2 = (int) x;
                         z2 = (int) z;
+                    }
+                    if (changeColor) {
+                        r = red;
+                        g = green;
+                        b = blue;
                     }
                     writer.write(
                             "name:" + split[0] +
@@ -82,9 +100,9 @@ public class JMapTVoxel extends SQLException {
                                     ",z:" + z2 +
                                     ",y:" + split[3] +
                                     ",enabled:" + split[4] +
-                                    ",red:" + "0." + 0 +
-                                    ",green:" + "0." + 7647059 +
-                                    ",blue:" + "0." + 69803923 +
+                                    ",red:" + r +
+                                    ",green:" + g +
+                                    ",blue:" + b +
                                     ",suffix:" +
                                     ",world:" +
                                     ",dimensions:" + split[5] + "#\n"
