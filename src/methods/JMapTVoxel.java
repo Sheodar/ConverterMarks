@@ -1,7 +1,8 @@
 package methods;
 
+import javafx.scene.control.*;
 import sample.Main;
-
+import javafx.scene.control.Label;
 import java.awt.*;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -27,7 +28,7 @@ public class JMapTVoxel extends SQLException {
         return (int) x;
     }
 
-    public static void remakeJV(String path1, String path2, String name, boolean centre, boolean changeColor, double red, double green, double blue) throws Exception {
+    public static void remakeJV(String path1, String path2, String name, boolean centre, boolean changeColor, double red, double green, double blue, Label success) throws Exception {
         File folder = new File(path1);
         File[] folderEntries = folder.listFiles();
         assert folderEntries != null;
@@ -40,6 +41,7 @@ public class JMapTVoxel extends SQLException {
         writer.write("subworlds:\n" +
                 "oldNorthWorlds:\n" +
                 "seeds:\n");
+
         for (File entry : folderEntries) {
             if (Objects.equals(getFileExtension(entry.getName()), ".json")) {
                 if (entry.isFile()) {
@@ -75,19 +77,15 @@ public class JMapTVoxel extends SQLException {
 
                     double x = Double.parseDouble(split[1]);
                     double z = Double.parseDouble(split[2]);
+                    int x2 = (int) x;
+                    int z2 = (int) z;
                     double r = (double) (Integer.parseInt(split[6].substring(1))) / 255;
                     double g = (double) (Integer.parseInt(split[7].substring(1))) / 255;
                     double b = (double) (Integer.parseInt(split[8].substring(1))) / 255;
 
-                    int x2;
-                    int z2;
-
                     if (centre) {
                         x2 = centredMarker(x);
                         z2 = centredMarker(z);
-                    } else {
-                        x2 = (int) x;
-                        z2 = (int) z;
                     }
                     if (changeColor) {
                         r = red;
@@ -111,7 +109,9 @@ public class JMapTVoxel extends SQLException {
                     marker.close();
                 }
             }
+
         }
+        success.setVisible(true);
         writer.close();
     }
 }

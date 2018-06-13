@@ -1,5 +1,7 @@
 package methods;
 
+import javafx.scene.control.Label;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -18,8 +20,14 @@ public class VoxelTJMap extends SQLException {
         }
         return s.substring(0, s.length() - 1);
     }
+    private static int centredMarker(double x) {
+        x = Math.ceil(x / 16);
+        x = x - 0.5;
+        x = x * 16;
+        return (int) x;
+    }
 
-    public static void remakeVJ(String path1, String path2) throws Exception {
+    public static void remakeVJ(String path1, String path2, boolean centre, boolean changeColor, double r, double g, double b, Label success) throws Exception {
         InputStreamReader marker = new InputStreamReader(new FileInputStream(path1), "Cp1251");
         Scanner scan = new Scanner(marker);
         int c = 1;
@@ -31,23 +39,41 @@ public class VoxelTJMap extends SQLException {
                 String line = scan.nextLine().replaceAll("(\\bname|\\b:|\\bsuffixworld|\\bx|\\bz|\\by|\\benabled|\\bdimensions|\\b#.*?\\b)", "");
                 String line2 = removeLastChar(line).replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
                 String[] split = line2.split(",");
-                String name = split[0] + "_" + split[1] + "," + split[3] + "," + split[2] + ".json";
+
+                int red = (int) Math.floor(Double.parseDouble(split[5].substring(3))*255);
+                int green = (int) Math.floor(Double.parseDouble(split[6].substring(5))*255);
+                int blue = (int) Math.floor(Double.parseDouble(split[7].substring(4))*255);
+                double x = Double.parseDouble(split[1]);
+                double z = Double.parseDouble(split[2]);
+
+                int x2 = (int) x;
+                int z2 = (int) z;
+                if (centre) {
+                    x2 = centredMarker(x);
+                    z2 = centredMarker(z);
+                }
+                if (changeColor) {
+                    red = (int) Math.floor(r*255);
+                    green = (int) Math.floor(g*255);
+                    blue = (int) Math.floor(b*255);
+                }
+                String name = split[0] + "_" + x2 + "," + split[3] + "," + z2 + ".json";
                 Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), UTF_8);
-//                System.out.print(Arrays.toString(split));
+
                 writer.write("{ \n\"id\": \"" +
                         split[0] + "_" +
                         split[1] + "," +
                         split[3] + "," +
                         split[2] + " \",\n\"name\" : \"" +
                         split[0] + "\",\n\"icon\":\"waypoint-normal.png\",\n\"x\": " +
-                        split[1] + ",\n\"y\": " +
+                        x2 + ",\n\"y\": " + //x
                         split[3] + ",\n\"z\": " +
-                        split[2] + ",\n\"r\": " +
-                        20 +
+                        z2 + ",\n\"r\": " + //z
+                        red +
                         ",\n\"g\": " +
-                        204 +
+                        green +
                         ",\n\"b\": " +
-                        165 +
+                        blue +
                         ",\n\"enable\": true, \n\"type\": \"Normal\", \n\"origin\": \"JourneyMap\", \n\"dimensions\": [\n" +
                         split[10] + "\n]\n}");
                 writer.flush();

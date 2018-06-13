@@ -58,6 +58,14 @@ public class Controller {
     private Label vjError1;
     @FXML
     private Label vjError2;
+    @FXML
+    private CheckBox vjCheckCenter;
+    @FXML
+    private CheckBox vjCheckColorSwap;
+    @FXML
+    private ColorPicker colorPickVJ;
+    @FXML
+    private Label succesVJ;
     /**
      * ---------------------------- Window JMap -> Voxel  -------------------------------
      **/
@@ -93,7 +101,8 @@ public class Controller {
     private CheckBox jvCheckColorSwap;
     @FXML
     private ColorPicker colorPickJV;
-
+    @FXML
+    private Label succesJV;
 
     /**
      * --------------------------------------------------------------------------------
@@ -139,9 +148,9 @@ public class Controller {
 //                    System.out.println(splitX[1]);
 //                }
 //                System.out.println(toRGBCode(colorPickJV.getValue().hashCode()));
-                System.out.println(colorPickJV.getValue().getRed());
-                System.out.println(colorPickJV.getValue().getGreen());
-                System.out.println(colorPickJV.getValue().getBlue());
+//                System.out.println(colorPickJV.getValue().getRed());
+//                System.out.println(colorPickJV.getValue().getGreen());
+//                System.out.println(colorPickJV.getValue().getBlue());
             }
         });
 
@@ -152,6 +161,17 @@ public class Controller {
                     colorPickJV.setVisible(true);
                 } else {
                     colorPickJV.setVisible(false);
+                }
+            }
+        });
+
+        vjCheckColorSwap.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue) {
+                    colorPickVJ.setVisible(true);
+                } else {
+                    colorPickVJ.setVisible(false);
                 }
             }
         });
@@ -187,6 +207,7 @@ public class Controller {
         vjBack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                succesVJ.setVisible(false);
                 hi.setVisible(true);
                 v_j.setVisible(false);
                 vjPath1.setText("");
@@ -198,6 +219,7 @@ public class Controller {
         jvBack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                succesJV.setVisible(false);
                 hi.setVisible(true);
                 j_v.setVisible(false);
                 jvNameNewFile.setText("");
@@ -212,6 +234,7 @@ public class Controller {
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
+                        succesVJ.setVisible(false);
                         FileChooser fileChooser = new FileChooser();
                         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("*.points", "*.points");
                         fileChooser.getExtensionFilters().add(extFilter);
@@ -227,6 +250,7 @@ public class Controller {
         vjSearch2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                succesVJ.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -238,6 +262,7 @@ public class Controller {
         jvSearch1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                succesJV.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -248,6 +273,7 @@ public class Controller {
         jvSearch2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                succesJV.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -259,6 +285,7 @@ public class Controller {
         vjStart.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                succesVJ.setVisible(false);
                 vjError1.setVisible(false);
                 vjError2.setVisible(false);
                 vjErrorMain.setVisible(false);
@@ -273,7 +300,15 @@ public class Controller {
                     vjErrorMain.setVisible(true);
                 } else {
                     try {
-                        remakeVJ(vjPath1.getText(), vjPath2.getText());
+                        remakeVJ(vjPath1.getText(),
+                                 vjPath2.getText(),
+                                 vjCheckCenter.isSelected(),
+                                 vjCheckColorSwap.isSelected(),
+                                 colorPickVJ.getValue().getRed(),
+                                 colorPickVJ.getValue().getGreen(),
+                                 colorPickVJ.getValue().getBlue(),
+                                 succesVJ
+                        );
                         vjPath1.setText("");
                         vjPath2.setText("");
                     } catch (Exception e) {
@@ -285,6 +320,7 @@ public class Controller {
         jvStart.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                succesJV.setVisible(false);
                 jvError1.setVisible(false);
                 jvError2.setVisible(false);
                 jvErrorMain.setVisible(false);
@@ -308,7 +344,8 @@ public class Controller {
                                 jvCheckColorSwap.isSelected(),
                                 colorPickJV.getValue().getRed(),
                                 colorPickJV.getValue().getGreen(),
-                                colorPickJV.getValue().getBlue()
+                                colorPickJV.getValue().getBlue(),
+                                succesJV
                         );
 
 

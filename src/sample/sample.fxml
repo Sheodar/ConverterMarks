@@ -14,25 +14,43 @@
         <Button fx:id="jvmButton" focusTraversable="false" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" text="JMap -&gt; VoxelMap" />
         <AnchorPane id="v_j" fx:id="v_j" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false">
             <children>
-                <Label focusTraversable="false" layoutX="14.0" layoutY="4.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь в исходному файлу формата .points">
+                <Label focusTraversable="false" layoutX="15.0" layoutY="1.0" prefHeight="22.0" prefWidth="573.0" text="Укажите путь в исходному файлу формата .points">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </Label>
                 <TextField fx:id="vjPath1" editable="false" focusTraversable="false" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="454.0" />
                 <Button fx:id="vjSearch1" focusTraversable="false" layoutX="480.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
-                <Label focusTraversable="false" layoutX="14.0" layoutY="66.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить новые маркеры">
+                <Label focusTraversable="false" layoutX="14.0" layoutY="63.0" prefHeight="22.0" prefWidth="573.0" text="Укажите папку, в которую хотите сохранить новые маркеры">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </Label>
-                <TextField fx:id="vjPath2" editable="false" focusTraversable="false" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="454.0" />
-                <Button fx:id="vjSearch2" focusTraversable="false" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
+                <TextField fx:id="vjPath2" editable="false" focusTraversable="false" layoutX="13.0" layoutY="90.0" prefHeight="25.0" prefWidth="454.0" />
+                <Button fx:id="vjSearch2" focusTraversable="false" layoutX="480.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
                 <Button fx:id="vjStart" focusTraversable="false" layoutX="480.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
                 <Button fx:id="vjBack" focusTraversable="false" layoutX="364.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
                 <Label fx:id="vjErrorMain" focusTraversable="false" layoutX="14.0" layoutY="135.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
-                <Label fx:id="vjError2" focusTraversable="false" layoutX="350.0" layoutY="70.0" text="*" textFill="#c30000" visible="false" />
+                <Label fx:id="vjError2" focusTraversable="false" layoutX="350.0" layoutY="67.0" text="*" textFill="#c30000" visible="false" />
                 <Label fx:id="vjError1" focusTraversable="false" layoutX="295.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
+            <Label layoutX="362.0" layoutY="184.0" text="Отцентрировать маркеры по чанку...">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="vjCheckCenter" focusTraversable="false" layoutX="568.0" layoutY="183.0" mnemonicParsing="false" pickOnBounds="false" />
+            <ColorPicker fx:id="colorPickVJ" focusTraversable="false" layoutX="480.0" layoutY="151.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <Label layoutX="362.0" layoutY="128.0" text="Сменить цвет всем маркерам...........">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="vjCheckColorSwap" focusTraversable="false" layoutX="568.0" layoutY="126.0" mnemonicParsing="false" pickOnBounds="false" />
+            <Label fx:id="succesVJ" focusTraversable="false" layoutX="195.0" layoutY="214.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane id="v_j" fx:id="j_v" layoutY="49.0" prefHeight="251.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
@@ -92,6 +110,11 @@
                </font>
             </Label>
             <CheckBox fx:id="jvCheckColorSwap" focusTraversable="false" layoutX="567.0" layoutY="128.0" mnemonicParsing="false" pickOnBounds="false" />
+            <Label fx:id="succesJV" focusTraversable="false" layoutX="196.0" layoutY="214.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="hi" layoutX="14.0" layoutY="57.0" prefHeight="243.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">
