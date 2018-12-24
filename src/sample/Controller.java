@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
-import java.awt.Color;
+import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
@@ -66,6 +66,16 @@ public class Controller {
     private ColorPicker colorPickVJ;
     @FXML
     private Label succesVJ;
+    @FXML
+    private Label color2;
+    @FXML
+    private TextField vjOtherColor;
+    @FXML
+    private ColorPicker otherColorPickVJ1;
+    @FXML
+    private Label color2onoff;
+    @FXML
+    private CheckBox vjCheckOtherColor;
     /**
      * ---------------------------- Window JMap -> Voxel  -------------------------------
      **/
@@ -103,6 +113,20 @@ public class Controller {
     private ColorPicker colorPickJV;
     @FXML
     private Label succesJV;
+
+    @FXML
+    private Label color2JV;
+    @FXML
+    private TextField jvOtherColor;
+    @FXML
+    private ColorPicker otherColorPickJV;
+    @FXML
+    private Label color2JVonoff;
+    @FXML
+    private CheckBox jvCheckOtherColor;
+
+
+
 
     /**
      * --------------------------------------------------------------------------------
@@ -154,25 +178,39 @@ public class Controller {
             }
         });
 
-        jvCheckColorSwap.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                    colorPickJV.setVisible(true);
-                } else {
-                    colorPickJV.setVisible(false);
-                }
+        jvCheckColorSwap.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                colorPickJV.setVisible(true);
+                color2JV.setVisible(true);
+                jvOtherColor.setVisible(true);
+                otherColorPickJV.setVisible(true);
+                color2JVonoff.setVisible(true);
+                jvCheckOtherColor.setVisible(true);
+            } else {
+                colorPickJV.setVisible(false);
+                color2JV.setVisible(false);
+                jvOtherColor.setVisible(false);
+                otherColorPickJV.setVisible(false);
+                color2JVonoff.setVisible(false);
+                jvCheckOtherColor.setVisible(false);
             }
         });
 
-        vjCheckColorSwap.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                    colorPickVJ.setVisible(true);
-                } else {
-                    colorPickVJ.setVisible(false);
-                }
+        vjCheckColorSwap.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                colorPickVJ.setVisible(true);
+                color2.setVisible(true);
+                vjOtherColor.setVisible(true);
+                otherColorPickVJ1.setVisible(true);
+                color2onoff.setVisible(true);
+                vjCheckOtherColor.setVisible(true);
+            } else {
+                colorPickVJ.setVisible(false);
+                color2.setVisible(false);
+                vjOtherColor.setVisible(false);
+                otherColorPickVJ1.setVisible(false);
+                color2onoff.setVisible(false);
+                vjCheckOtherColor.setVisible(false);
             }
         });
 
@@ -307,6 +345,15 @@ public class Controller {
                                  colorPickVJ.getValue().getRed(),
                                  colorPickVJ.getValue().getGreen(),
                                  colorPickVJ.getValue().getBlue(),
+
+                                vjCheckOtherColor.isSelected(),
+                                otherColorPickVJ1.getValue().getRed(),
+                                otherColorPickVJ1.getValue().getGreen(),
+                                otherColorPickVJ1.getValue().getBlue(),
+                                vjOtherColor.getText(),
+
+
+
                                  succesVJ
                         );
                         vjPath1.setText("");
@@ -345,6 +392,13 @@ public class Controller {
                                 colorPickJV.getValue().getRed(),
                                 colorPickJV.getValue().getGreen(),
                                 colorPickJV.getValue().getBlue(),
+
+                                jvCheckOtherColor.isSelected(),
+                                otherColorPickJV.getValue().getRed(),
+                                otherColorPickJV.getValue().getGreen(),
+                                otherColorPickJV.getValue().getBlue(),
+                                jvOtherColor.getText(),
+
                                 succesJV
                         );
 

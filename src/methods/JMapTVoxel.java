@@ -28,7 +28,7 @@ public class JMapTVoxel extends SQLException {
         return (int) x;
     }
 
-    public static void remakeJV(String path1, String path2, String name, boolean centre, boolean changeColor, double red, double green, double blue, Label success) throws Exception {
+    public static void remakeJV(String path1, String path2, String name, boolean centre, boolean changeColor, double red, double green, double blue, boolean changeColor2, double red2, double green2, double blue2, String name2, Label success) throws Exception {
         File folder = new File(path1);
         File[] folderEntries = folder.listFiles();
         assert folderEntries != null;
@@ -91,6 +91,11 @@ public class JMapTVoxel extends SQLException {
                         r = red;
                         g = green;
                         b = blue;
+                    }
+                    if (changeColor2 && split[0].equals(name2)) {
+                        r = red2;
+                        g = green2;
+                        b = blue2;
                     }
                     writer.write(
                             "name:" + split[0] +

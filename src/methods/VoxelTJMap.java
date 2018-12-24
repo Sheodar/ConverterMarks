@@ -27,7 +27,7 @@ public class VoxelTJMap extends SQLException {
         return (int) x;
     }
 
-    public static void remakeVJ(String path1, String path2, boolean centre, boolean changeColor, double r, double g, double b, Label success) throws Exception {
+    public static void remakeVJ(String path1, String path2, boolean centre, boolean changeColor, double r, double g, double b, boolean changeColor2, double r2, double g2, double b2, String name2, Label success) throws Exception {
         InputStreamReader marker = new InputStreamReader(new FileInputStream(path1), "Cp1251");
         Scanner scan = new Scanner(marker);
         int c = 1;
@@ -52,12 +52,18 @@ public class VoxelTJMap extends SQLException {
                     x2 = centredMarker(x);
                     z2 = centredMarker(z);
                 }
+                String name = split[0] + "_" + x2 + "," + split[3] + "," + z2 + ".json";
                 if (changeColor) {
                     red = (int) Math.floor(r*255);
                     green = (int) Math.floor(g*255);
                     blue = (int) Math.floor(b*255);
                 }
-                String name = split[0] + "_" + x2 + "," + split[3] + "," + z2 + ".json";
+                if (changeColor2 && name.equals(name2)) {
+                    red = (int) Math.floor(r2*255);
+                    green = (int) Math.floor(g2*255);
+                    blue = (int) Math.floor(b2*255);
+                }
+
                 Writer writer = new OutputStreamWriter(new FileOutputStream(path2 + name, false), UTF_8);
 
                 writer.write("{ \n\"id\": \"" +

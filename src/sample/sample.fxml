@@ -39,16 +39,29 @@
                </font>
             </Label>
             <CheckBox fx:id="vjCheckCenter" focusTraversable="false" layoutX="568.0" layoutY="183.0" mnemonicParsing="false" pickOnBounds="false" />
-            <ColorPicker fx:id="colorPickVJ" focusTraversable="false" layoutX="480.0" layoutY="151.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
-            <Label layoutX="362.0" layoutY="128.0" text="Сменить цвет всем маркерам...........">
+            <ColorPicker fx:id="colorPickVJ" focusTraversable="false" layoutX="195.0" layoutY="151.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <Label layoutX="15.0" layoutY="128.0" prefHeight="15.0" prefWidth="267.0" text="Сменить цвет всем маркерам.............................">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <CheckBox fx:id="vjCheckColorSwap" focusTraversable="false" layoutX="568.0" layoutY="126.0" mnemonicParsing="false" pickOnBounds="false" />
-            <Label fx:id="succesVJ" focusTraversable="false" layoutX="195.0" layoutY="214.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
+            <CheckBox fx:id="vjCheckColorSwap" focusTraversable="false" layoutX="283.0" layoutY="127.0" mnemonicParsing="false" pickOnBounds="false" />
+            <Label fx:id="succesVJ" disable="true" focusTraversable="false" layoutX="195.0" layoutY="214.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="otherColorPickVJ1" focusTraversable="false" layoutX="195.0" layoutY="213.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <Label fx:id="color2" layoutX="14.0" layoutY="190.0" text="Исключения в цвете (имя)..............." visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="vjOtherColor" focusTraversable="false" layoutX="213.0" layoutY="182.0" prefHeight="25.0" prefWidth="87.0" visible="false" />
+            <CheckBox fx:id="vjCheckOtherColor" focusTraversable="false" layoutX="176.0" layoutY="221.0" mnemonicParsing="false" pickOnBounds="false" visible="false" />
+            <Label fx:id="color2onoff" layoutX="153.0" layoutY="221.0" text="Вкл" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
                </font>
             </Label>
             </children>
@@ -79,40 +92,53 @@
                 <Label fx:id="jvErrorMain" focusTraversable="false" layoutX="14.0" layoutY="120.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
                 <Label fx:id="jvError2" focusTraversable="false" layoutX="448.0" layoutY="69.0" text="*" textFill="#c30000" visible="false" />
                 <Label fx:id="jvError1" focusTraversable="false" layoutX="346.0" layoutY="7.0" text="*" textFill="#c30000" visible="false" />
-                <Label focusTraversable="false" layoutX="14.0" layoutY="188.0" prefHeight="19.0" prefWidth="573.0" text="Не указав имя, файлу будет задано имя по-умолчанию." textFill="#a80c0c" wrapText="true">
-                    <font>
-                        <Font name="Arial" size="11.0" />
-                    </font>
-                </Label>
-            <Label layoutX="14.0" layoutY="145.0" text="Введите имя будущего файла:">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="jvNameNewFile" focusTraversable="false" layoutX="14.0" layoutY="163.0" prefHeight="25.0" prefWidth="289.0" />
-            <Label fx:id="jvHint" alignment="CENTER" contentDisplay="CENTER" layoutX="307.0" layoutY="149.0" prefHeight="17.0" prefWidth="15.0" style="-fx-border-color: #F4A460; -fx-background-color: #FFDEAD;" text="?" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="jvHintTarget" layoutX="304.0" layoutY="146.0" opacity="0.0" prefHeight="25.0" prefWidth="21.0" text="null" />
             <Label layoutX="363.0" layoutY="188.0" text="Отцентрировать маркеры по чанку...">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
             <Button fx:id="Test" layoutX="252.0" layoutY="212.0" mnemonicParsing="false" text="Button" visible="false" />
-            <CheckBox fx:id="jvCheckCenter" focusTraversable="false" layoutX="568.0" layoutY="185.0" mnemonicParsing="false" pickOnBounds="false" />
-            <ColorPicker fx:id="colorPickJV" focusTraversable="false" layoutX="479.0" layoutY="151.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
-            <Label layoutX="363.0" layoutY="130.0" text="Сменить цвет всем маркерам...........">
+            <CheckBox fx:id="jvCheckCenter" focusTraversable="false" layoutX="570.0" layoutY="186.0" mnemonicParsing="false" pickOnBounds="false" />
+            <ColorPicker fx:id="colorPickJV" focusTraversable="false" layoutX="198.0" layoutY="143.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <Label layoutX="14.0" layoutY="122.0" prefHeight="15.0" prefWidth="267.0" text="Сменить цвет всем маркерам.............................">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <CheckBox fx:id="jvCheckColorSwap" focusTraversable="false" layoutX="567.0" layoutY="128.0" mnemonicParsing="false" pickOnBounds="false" />
-            <Label fx:id="succesJV" focusTraversable="false" layoutX="196.0" layoutY="214.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
+            <CheckBox fx:id="jvCheckColorSwap" focusTraversable="false" layoutX="285.0" layoutY="122.0" mnemonicParsing="false" pickOnBounds="false" />
+            <Label fx:id="succesJV" focusTraversable="false" layoutX="216.0" layoutY="202.0" prefHeight="22.0" prefWidth="164.0" text="Операция выполнена" textAlignment="CENTER" textFill="#06b23f" visible="false" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="otherColorPickJV" focusTraversable="false" layoutX="197.0" layoutY="204.0" pickOnBounds="false" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <Label fx:id="color2JV" layoutX="16.0" layoutY="181.0" text="Исключения в цвете (имя)..............." visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="jvOtherColor" focusTraversable="false" layoutX="215.0" layoutY="173.0" prefHeight="25.0" prefWidth="87.0" visible="false" />
+            <CheckBox fx:id="jvCheckOtherColor" focusTraversable="false" layoutX="178.0" layoutY="212.0" mnemonicParsing="false" pickOnBounds="false" visible="false" />
+            <Label fx:id="color2JVonoff" layoutX="155.0" layoutY="212.0" text="Вкл" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="313.0" layoutY="123.0" text="Введите имя будущего файла:">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="jvNameNewFile" focusTraversable="false" layoutX="314.0" layoutY="142.0" prefHeight="25.0" prefWidth="281.0" />
+                <Label focusTraversable="false" layoutX="314.0" layoutY="164.0" prefHeight="19.0" prefWidth="289.0" text="Не указав имя, файлу будет задано имя по-умолчанию." textFill="#a80c0c" wrapText="true">
+                    <font>
+                        <Font name="Arial" size="11.0" />
+                    </font>
+                </Label>
+            <Label fx:id="jvHintTarget" layoutX="575.0" layoutY="119.0" opacity="0.0" prefHeight="25.0" prefWidth="21.0" text="null" />
+            <Label fx:id="jvHint" alignment="CENTER" contentDisplay="CENTER" layoutX="580.0" layoutY="122.0" prefHeight="17.0" prefWidth="15.0" style="-fx-border-color: #F4A460; -fx-background-color: #FFDEAD;" text="?" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
             </children>
