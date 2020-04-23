@@ -20,6 +20,7 @@ import java.util.Objects;
 
 import static methods.JMapTVoxel.remakeJV;
 import static methods.VoxelTJMap.remakeVJ;
+import static methods.VoxelTJMap.updateV;
 
 public class Controller {
     /**
@@ -76,6 +77,11 @@ public class Controller {
     private Label color2onoff;
     @FXML
     private CheckBox vjCheckOtherColor;
+
+
+    @FXML
+    private CheckBox vjNeedConvetCheck;
+
     /**
      * ---------------------------- Window JMap -> Voxel  -------------------------------
      **/
@@ -157,6 +163,11 @@ public class Controller {
             public void handle(MouseEvent event) {
                 jvHintText.setVisible(false);
             }
+        });
+
+        vjNeedConvetCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            vjPath2.setDisable(oldValue);
+            vjSearch2.setDisable(oldValue);
         });
 
 
@@ -328,34 +339,52 @@ public class Controller {
                 vjError2.setVisible(false);
                 vjErrorMain.setVisible(false);
                 if (Objects.equals(vjPath1.getText(), "")) {
-                    if (Objects.equals(vjPath2.getText(), "")) {
+                    if (Objects.equals(vjPath2.getText(), "") && vjNeedConvetCheck.isSelected()) {
                         vjError2.setVisible(true);
                     }
                     vjError1.setVisible(true);
                     vjErrorMain.setVisible(true);
-                } else if (Objects.equals(vjPath2.getText(), "")) {
+                }else if (Objects.equals(vjPath2.getText(), "") && vjNeedConvetCheck.isSelected()) {
                     vjError2.setVisible(true);
                     vjErrorMain.setVisible(true);
-                } else {
+                }else {
                     try {
-                        remakeVJ(vjPath1.getText(),
-                                 vjPath2.getText(),
-                                 vjCheckCenter.isSelected(),
-                                 vjCheckColorSwap.isSelected(),
-                                 colorPickVJ.getValue().getRed(),
-                                 colorPickVJ.getValue().getGreen(),
-                                 colorPickVJ.getValue().getBlue(),
+                        if(vjNeedConvetCheck.isSelected()){
+                            remakeVJ(
+                                    vjPath1.getText(),
+                                    vjPath2.getText(),
+                                    vjCheckCenter.isSelected(),
+                                    vjCheckColorSwap.isSelected(),
+                                    colorPickVJ.getValue().getRed(),
+                                    colorPickVJ.getValue().getGreen(),
+                                    colorPickVJ.getValue().getBlue(),
 
-                                vjCheckOtherColor.isSelected(),
-                                otherColorPickVJ1.getValue().getRed(),
-                                otherColorPickVJ1.getValue().getGreen(),
-                                otherColorPickVJ1.getValue().getBlue(),
-                                vjOtherColor.getText(),
+                                    vjCheckOtherColor.isSelected(),
+                                    otherColorPickVJ1.getValue().getRed(),
+                                    otherColorPickVJ1.getValue().getGreen(),
+                                    otherColorPickVJ1.getValue().getBlue(),
+                                    vjOtherColor.getText(),
 
+                                    succesVJ
+                            );
+                        }else{
+                            updateV(
+                                    vjPath1.getText(),
+                                    vjCheckCenter.isSelected(),
+                                    vjCheckColorSwap.isSelected(),
+                                    colorPickVJ.getValue().getRed(),
+                                    colorPickVJ.getValue().getGreen(),
+                                    colorPickVJ.getValue().getBlue(),
 
+                                    vjCheckOtherColor.isSelected(),
+                                    otherColorPickVJ1.getValue().getRed(),
+                                    otherColorPickVJ1.getValue().getGreen(),
+                                    otherColorPickVJ1.getValue().getBlue(),
+                                    vjOtherColor.getText(),
 
-                                 succesVJ
-                        );
+                                    succesVJ
+                            );
+                        }
                         vjPath1.setText("");
                         vjPath2.setText("");
                     } catch (Exception e) {

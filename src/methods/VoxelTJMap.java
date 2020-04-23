@@ -5,7 +5,9 @@ import javafx.scene.control.Label;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -88,6 +90,72 @@ public class VoxelTJMap extends SQLException {
 
             }
         }
+        marker.close();
+    }
+
+    public static void updateV(String path1, boolean centre, boolean changeColor, double r, double g, double b, boolean changeColor2, double r2, double g2, double b2, String name2, Label success) throws Exception {
+        InputStreamReader marker = new InputStreamReader(new FileInputStream(path1), "Cp1251");
+        Scanner scan = new Scanner(marker);
+        int c = 0;
+
+        ArrayList <String> stringsBuffer= new ArrayList<>();
+        while (scan.hasNextLine()) {
+            if (c < 3) {
+                c++;
+                scan.nextLine();
+            }else{
+                stringsBuffer.add(scan.nextLine());
+            }
+        }
+        Writer writer = new OutputStreamWriter(new FileOutputStream(path1, false), "Cp1251");
+        writer.write("subworlds:\n" +
+                "oldNorthWorlds:\n" +
+                "seeds:\n");
+        for(String currentLine:stringsBuffer) {
+            String line = currentLine.replaceAll("(\\bname|\\b:|\\bsuffixworld|\\bx|\\bz|\\by|\\benabled|\\bdimensions|\\b#.*?\\b)", "");
+            String line2 = removeLastChar(line).replaceAll("(\\\\|/|:|\\?|\\*|<|>|\\|.*?)", "+");
+            String[] split = line2.split(",");
+
+            double red = Double.parseDouble(split[5].substring(3));
+            double green = Double.parseDouble(split[6].substring(5));
+            double blue = Double.parseDouble(split[7].substring(4));
+            double x = Double.parseDouble(split[1]);
+            double z = Double.parseDouble(split[2]);
+
+            int x2 = (int) x;
+            int z2 = (int) z;
+            if (centre) {
+                x2 = centredMarker(x);
+                z2 = centredMarker(z);
+            }
+            String name = split[0];
+            if (changeColor) {
+                red = r;
+                green = g;
+                blue = b;
+            }
+            if (changeColor2 && name.equals(name2)) {
+                red = r2;
+                green = g2;
+                blue = b2;
+            }
+
+            writer.write(
+                    "name:" + name +
+                        ",x:" + x2 +
+                        ",z:" + z2 +
+                        ",y:" + split[3] +
+                        ",enabled:" + split[4] +
+                        ",red:" + red +
+                        ",green:" + green +
+                        ",blue:" + blue +
+                        ",suffix:" +
+                        ",world:" +
+                        ",dimensions:" + split[10] + "#\n"
+            );
+            writer.flush();
+        }
+        writer.close();
         marker.close();
     }
 }
