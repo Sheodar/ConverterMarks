@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class Main extends Application {
-
     static Window stage;
 
     @Override
