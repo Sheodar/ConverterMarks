@@ -30,7 +30,7 @@
                 <Button fx:id="vjSearch2" focusTraversable="false" layoutX="480.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Обзор..." />
                 <Button fx:id="vjStart" focusTraversable="false" layoutX="480.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Запуск" />
                 <Button fx:id="vjBack" focusTraversable="false" layoutX="364.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Назад" />
-                <Label fx:id="vjErrorMain" focusTraversable="false" layoutX="14.0" layoutY="119.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" />
+                <Label fx:id="vjErrorMain" focusTraversable="false" layoutX="14.0" layoutY="119.0" prefHeight="13.0" prefWidth="309.0" text="Пожалуйста, заполните оба поля для начала работы." textFill="#c30000" visible="false" />
                 <Label fx:id="vjError2" focusTraversable="false" layoutX="350.0" layoutY="67.0" text="*" textFill="#c30000" visible="false" />
                 <Label fx:id="vjError1" focusTraversable="false" layoutX="295.0" layoutY="3.0" text="*" textFill="#c30000" visible="false" />
             <Label layoutX="362.0" layoutY="202.0" text="Отцентрировать маркеры по чанку...">
