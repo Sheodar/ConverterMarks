@@ -18,9 +18,8 @@ import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
-import static methods.JMapTVoxel.remakeJV;
-import static methods.VoxelTJMap.remakeVJ;
-import static methods.VoxelTJMap.updateV;
+import static methods.JMapTVoxel.*;
+import static methods.VoxelTJMap.*;
 
 public class Controller {
     /**
@@ -66,8 +65,6 @@ public class Controller {
     @FXML
     private ColorPicker colorPickVJ;
     @FXML
-    private Label succesVJ;
-    @FXML
     private Label color2;
     @FXML
     private TextField vjOtherColor;
@@ -77,7 +74,6 @@ public class Controller {
     private Label color2onoff;
     @FXML
     private CheckBox vjCheckOtherColor;
-
 
     @FXML
     private CheckBox vjNeedConvetCheck;
@@ -110,15 +106,11 @@ public class Controller {
     @FXML
     private Label jvHintTarget;
     @FXML
-    private Button Test;
-    @FXML
     private CheckBox jvCheckCenter;
     @FXML
     private CheckBox jvCheckColorSwap;
     @FXML
     private ColorPicker colorPickJV;
-    @FXML
-    private Label succesJV;
 
     @FXML
     private Label color2JV;
@@ -131,7 +123,8 @@ public class Controller {
     @FXML
     private CheckBox jvCheckOtherColor;
 
-
+    @FXML
+    private CheckBox jvNeedConvetCheck;
 
 
     /**
@@ -170,23 +163,12 @@ public class Controller {
             vjSearch2.setDisable(oldValue);
         });
 
+        jvNeedConvetCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            jvPath2.setDisable(oldValue);
+            jvSearch2.setDisable(oldValue);
+            jvNameNewFile.setDisable(oldValue);
+            jvSearch2.setDisable(oldValue);
 
-        Test.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-//                float x = 5455/16;
-//                String q = String.valueOf(x);
-//                String[] splitX = q.split("\\.");
-//                System.out.println(x);
-//                System.out.println(q);
-//                if (splitX[1]!=null) {
-//                    System.out.println(splitX[1]);
-//                }
-//                System.out.println(toRGBCode(colorPickJV.getValue().hashCode()));
-//                System.out.println(colorPickJV.getValue().getRed());
-//                System.out.println(colorPickJV.getValue().getGreen());
-//                System.out.println(colorPickJV.getValue().getBlue());
-            }
         });
 
         jvCheckColorSwap.selectedProperty().addListener((observable, oldValue, newValue) -> {
@@ -256,7 +238,6 @@ public class Controller {
         vjBack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                succesVJ.setVisible(false);
                 hi.setVisible(true);
                 v_j.setVisible(false);
                 vjPath1.setText("");
@@ -268,7 +249,6 @@ public class Controller {
         jvBack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                succesJV.setVisible(false);
                 hi.setVisible(true);
                 j_v.setVisible(false);
                 jvNameNewFile.setText("");
@@ -283,7 +263,6 @@ public class Controller {
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                        succesVJ.setVisible(false);
                         FileChooser fileChooser = new FileChooser();
                         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("*.points", "*.points");
                         fileChooser.getExtensionFilters().add(extFilter);
@@ -299,7 +278,6 @@ public class Controller {
         vjSearch2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                succesVJ.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -311,7 +289,6 @@ public class Controller {
         jvSearch1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                succesJV.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -322,7 +299,6 @@ public class Controller {
         jvSearch2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                succesJV.setVisible(false);
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
@@ -334,7 +310,6 @@ public class Controller {
         vjStart.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                succesVJ.setVisible(false);
                 vjError1.setVisible(false);
                 vjError2.setVisible(false);
                 vjErrorMain.setVisible(false);
@@ -363,9 +338,7 @@ public class Controller {
                                     otherColorPickVJ1.getValue().getRed(),
                                     otherColorPickVJ1.getValue().getGreen(),
                                     otherColorPickVJ1.getValue().getBlue(),
-                                    vjOtherColor.getText(),
-
-                                    succesVJ
+                                    vjOtherColor.getText()
                             );
                         }else{
                             updateV(
@@ -380,9 +353,7 @@ public class Controller {
                                     otherColorPickVJ1.getValue().getRed(),
                                     otherColorPickVJ1.getValue().getGreen(),
                                     otherColorPickVJ1.getValue().getBlue(),
-                                    vjOtherColor.getText(),
-
-                                    succesVJ
+                                    vjOtherColor.getText()
                             );
                         }
                         vjPath1.setText("");
@@ -396,41 +367,54 @@ public class Controller {
         jvStart.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                succesJV.setVisible(false);
                 jvError1.setVisible(false);
                 jvError2.setVisible(false);
                 jvErrorMain.setVisible(false);
-                if (Objects.equals(jvPath1.getText(), "")) {
+                if (Objects.equals(jvPath1.getText(), "") && jvNeedConvetCheck.isSelected()) {
                     if (Objects.equals(jvPath2.getText(), "")) {
                         jvError2.setVisible(true);
                     }
                     jvError1.setVisible(true);
                     jvErrorMain.setVisible(true);
-                } else if (Objects.equals(jvPath2.getText(), "")) {
+                }else if (Objects.equals(jvPath2.getText(), "") && jvNeedConvetCheck.isSelected()) {
                     jvError2.setVisible(true);
                     jvErrorMain.setVisible(true);
-                } else {
+                }
+                else {
                     try {
+                        if(jvNeedConvetCheck.isSelected()){
+                            remakeJV(
+                                    jvPath1.getText(),
+                                    jvPath2.getText(),
+                                    jvNameNewFile.getText(),
+                                    jvCheckCenter.isSelected(),
+                                    jvCheckColorSwap.isSelected(),
+                                    colorPickJV.getValue().getRed(),
+                                    colorPickJV.getValue().getGreen(),
+                                    colorPickJV.getValue().getBlue(),
 
-                        remakeJV(
-                                jvPath1.getText(),
-                                jvPath2.getText(),
-                                jvNameNewFile.getText(),
-                                jvCheckCenter.isSelected(),
-                                jvCheckColorSwap.isSelected(),
-                                colorPickJV.getValue().getRed(),
-                                colorPickJV.getValue().getGreen(),
-                                colorPickJV.getValue().getBlue(),
+                                    jvCheckOtherColor.isSelected(),
+                                    otherColorPickJV.getValue().getRed(),
+                                    otherColorPickJV.getValue().getGreen(),
+                                    otherColorPickJV.getValue().getBlue(),
+                                    jvOtherColor.getText()
+                            );
+                        }else{
+                            updateJ(
+                                    jvPath1.getText(),
+                                    jvCheckCenter.isSelected(),
+                                    jvCheckColorSwap.isSelected(),
+                                    colorPickJV.getValue().getRed(),
+                                    colorPickJV.getValue().getGreen(),
+                                    colorPickJV.getValue().getBlue(),
 
-                                jvCheckOtherColor.isSelected(),
-                                otherColorPickJV.getValue().getRed(),
-                                otherColorPickJV.getValue().getGreen(),
-                                otherColorPickJV.getValue().getBlue(),
-                                jvOtherColor.getText(),
-
-                                succesJV
-                        );
-
+                                    jvCheckOtherColor.isSelected(),
+                                    otherColorPickJV.getValue().getRed(),
+                                    otherColorPickJV.getValue().getGreen(),
+                                    otherColorPickJV.getValue().getBlue(),
+                                    jvOtherColor.getText()
+                            );
+                        }
 
                         jvNameNewFile.setText("");
                         jvPath1.setText("");
