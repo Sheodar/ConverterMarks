@@ -281,7 +281,7 @@ public class Controller {
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
-                    vjPath2.setText(selectedDirectory.getAbsolutePath() + "\\");
+                    vjPath2.setText(selectedDirectory.getAbsolutePath() + File.separator);
                 }
             }
         });
@@ -292,7 +292,7 @@ public class Controller {
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
-                    jvPath1.setText(selectedDirectory.getAbsolutePath() + "\\");
+                    jvPath1.setText(selectedDirectory.getAbsolutePath() + File.separator);
                 }
             }
         });
@@ -302,7 +302,7 @@ public class Controller {
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(Main.stage);
                 if (selectedDirectory != null) {
-                    jvPath2.setText(selectedDirectory.getAbsolutePath() + "\\");
+                    jvPath2.setText(selectedDirectory.getAbsolutePath() + File.separator);
                 }
             }
         });
